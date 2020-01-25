@@ -1,13 +1,15 @@
+/*В таблице складских запасов storehouses_products в поле value могут встречаться самые разные цифры: 0, если товар закончился и выше нуля, если на складе имеются запасы. Необходимо отсортировать записи таким образом, чтобы они выводились в порядке увеличения значения value. Однако, нулевые запасы должны выводиться в конце, после всех записей.*/
+
 use shop;
 DROP TABLE IF EXISTS storehouses_products;
 CREATE TABLE storehouses_products (
   id SERIAL PRIMARY KEY,
     storehouse_id int unsigned,
     product_id int unsigned,
-    value int unsigned comment 'Р—Р°РїР°СЃ С‚РѕРІР°СЂРЅРѕР№ РїРѕР·РёС†РёРё РЅР° СЃРєР»Р°РґРµ',
-    created_at DATETIME default current_timestamp COMMENT 'Р”Р°С‚Р° СЂРµРіРёСЃС‚СЂР°С†РёРё',
-    updated_at DATETIME default current_timestamp ON UPDATE current_timestamp COMMENT 'Р”Р°С‚Р° РїРѕСЃР»РµРґРЅРµРіРѕ РѕР±РЅРѕРІР»РµРЅРёСЏ Р·Р°РїРёСЃРё'
-) COMMENT = 'РЎРєР»Р°РґС‹ Рё РїСЂРѕРґСѓРєС‚С‹';
+    value int unsigned comment 'Запас товарной позиции на складе',
+    created_at DATETIME default current_timestamp COMMENT 'Дата регистрации',
+    updated_at DATETIME default current_timestamp ON UPDATE current_timestamp COMMENT 'Дата последнего обновления записи'
+) COMMENT = 'Склады и продукты';
 
 INSERT INTO storehouses_products (storehouse_id, product_id, value) VALUES
   (1, 1, 0),
