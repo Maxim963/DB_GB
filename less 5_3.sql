@@ -1,4 +1,6 @@
-/*В таблице складских запасов storehouses_products в поле value могут встречаться самые разные цифры: 0, если товар закончился и выше нуля, если на складе имеются запасы. Необходимо отсортировать записи таким образом, чтобы они выводились в порядке увеличения значения value. Однако, нулевые запасы должны выводиться в конце, после всех записей.*/
+/*Р’ С‚Р°Р±Р»РёС†Рµ СЃРєР»Р°РґСЃРєРёС… Р·Р°РїР°СЃРѕРІ storehouses_products РІ РїРѕР»Рµ value РјРѕРіСѓС‚ РІСЃС‚СЂРµС‡Р°С‚СЊСЃСЏ СЃР°РјС‹Рµ СЂР°Р·РЅС‹Рµ С†РёС„СЂС‹: 0, РµСЃР»Рё С‚РѕРІР°СЂ Р·Р°РєРѕРЅС‡РёР»СЃСЏ Рё РІС‹С€Рµ РЅСѓР»СЏ, РµСЃР»Рё РЅР° СЃРєР»Р°РґРµ РёРјРµСЋС‚СЃСЏ Р·Р°РїР°СЃС‹. 
+ * РќРµРѕР±С…РѕРґРёРјРѕ РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°С‚СЊ Р·Р°РїРёСЃРё С‚Р°РєРёРј РѕР±СЂР°Р·РѕРј, С‡С‚РѕР±С‹ РѕРЅРё РІС‹РІРѕРґРёР»РёСЃСЊ РІ РїРѕСЂСЏРґРєРµ СѓРІРµР»РёС‡РµРЅРёСЏ Р·РЅР°С‡РµРЅРёСЏ value. 
+ * РћРґРЅР°РєРѕ, РЅСѓР»РµРІС‹Рµ Р·Р°РїР°СЃС‹ РґРѕР»Р¶РЅС‹ РІС‹РІРѕРґРёС‚СЊСЃСЏ РІ РєРѕРЅС†Рµ, РїРѕСЃР»Рµ РІСЃРµС… Р·Р°РїРёСЃРµР№.*/
 
 use shop;
 DROP TABLE IF EXISTS storehouses_products;
@@ -6,10 +8,10 @@ CREATE TABLE storehouses_products (
   id SERIAL PRIMARY KEY,
     storehouse_id int unsigned,
     product_id int unsigned,
-    value int unsigned comment 'Запас товарной позиции на складе',
-    created_at DATETIME default current_timestamp COMMENT 'Дата регистрации',
-    updated_at DATETIME default current_timestamp ON UPDATE current_timestamp COMMENT 'Дата последнего обновления записи'
-) COMMENT = 'Склады и продукты';
+    value int unsigned comment 'Р—Р°РїР°СЃ С‚РѕРІР°СЂРЅРѕР№ РїРѕР·РёС†РёРё РЅР° СЃРєР»Р°РґРµ',
+    created_at DATETIME default current_timestamp COMMENT 'Р”Р°С‚Р° СЂРµРіРёСЃС‚СЂР°С†РёРё',
+    updated_at DATETIME default current_timestamp ON UPDATE current_timestamp COMMENT 'Р”Р°С‚Р° РїРѕСЃР»РµРґРЅРµРіРѕ РѕР±РЅРѕРІР»РµРЅРёСЏ Р·Р°РїРёСЃРё'
+) COMMENT = 'РЎРєР»Р°РґС‹ Рё РїСЂРѕРґСѓРєС‚С‹';
 
 INSERT INTO storehouses_products (storehouse_id, product_id, value) VALUES
   (1, 1, 0),
